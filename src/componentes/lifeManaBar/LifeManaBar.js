@@ -3,23 +3,33 @@ import "./LifeManaBar.css";
 import {connect} from 'react-redux';
 
 
+//melhorar essa lógica, por que ta muito feio e confuso.
+//Ta um coco vergonhoso
+
+
 class LifeManaBar extends Component {
     state = {
         PercentMana: 100,
         PercentVida: 100,
-        VidaMaxima: this.props.char.Atributos.forca * 10,
+        VidaMaxima: 1 * 10,
         VidaAtual: 0,
-        ManaMaxima: this.props.char.Atributos.inteligencia * 10,
+        ManaMaxima: 1 * 10,
         ManaAtual: 0,
     }
 
     componentDidUpdate = () => {
-        console.log(this.state.VidaAtual);
+        console.log("LifeMana deu update");
     }
 
     componentDidMount = () => {
-        this.setState({VidaAtual: this.state.VidaMaxima});
-        this.setState({ManaAtual: this.state.ManaMaxima});
+        console.log("LifeMana foi montado");
+        const {destreza, inteligencia, forca} = this.props.char.Atributos;
+        this.setState({
+            VidaMaxima: forca * 10,
+            ManaMaxima: inteligencia * 10,
+            VidaAtual: forca * 10,
+            ManaAtual: inteligencia * 10,
+        })
     }
     
     adicionar = (barra)=>{

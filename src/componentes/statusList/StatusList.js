@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./StatusList.css";
 import {connect} from "react-redux";
 import {UpdateChar,SelectChar} from '../../actions/index';
+import LifeManaBar from "../../componentes/lifeManaBar/LifeManaBar";
 
 class StatusList extends Component {
     state = {
@@ -10,6 +11,10 @@ class StatusList extends Component {
         inteligencia: '',
     }
 
+    componentDidUpdate = () => {
+        console.log("StatusList deu update");
+    }
+   
     componentDidMount = () => {
         this.setState({
             destreza: this.props.char.Atributos.destreza,
@@ -17,6 +22,7 @@ class StatusList extends Component {
             inteligencia: this.props.char.Atributos.destreza,
         })
     }
+    
 
     onFormSubmit = (event) => {
         event.preventDefault();
@@ -26,37 +32,45 @@ class StatusList extends Component {
 
     render() {
         return (
-            <div className="statusbar"> 
-                <div className="FormStatsPoint">
-                    <form onSubmit={this.onFormSubmit} className="ui form">
-                        <div className= "fields">
-                            <div className= "field">
-                            <label>Dexterity</label>
-                            <input
-                                value={this.state.destreza || ''}
-                                onChange={(e)=>this.setState({destreza: e.target.value})}
-                            />
-                            </div>
-                            <div className= "field">
-                            <label>Strength</label>
-                            <input
-                                value={this.state.forca || ''}
-                                onChange={(e)=>this.setState({forca: e.target.value})}
-                            />
-                            </div>
-                            <div className= "field">
-                            <label>Intelligence</label>
-                            <input
-                                value={this.state.inteligencia || ''}
-                                onChange={(e)=>this.setState({inteligencia: e.target.value})}
-                            />
-                            </div>
-                        </div>
-                        <div className = "field button">
-                            <button className="ui button" type="submit">Salvar Status</button>
-                        </div>
-                    </form> 
+            <div>
+                <div className="LifeManaPoint">
+                    <div>
+                    <LifeManaBar char = {this.props.char}>
+                    </LifeManaBar>
+                    </div>
                 </div>  
+                <div className="statusbar"> 
+                    <div className="FormStatsPoint">
+                        <form onSubmit={this.onFormSubmit} className="ui form">
+                            <div className= "fields">
+                                <div className= "field">
+                                <label>Dexterity</label>
+                                <input
+                                    value={this.state.destreza}
+                                    onChange={(e)=>this.setState({destreza: e.target.value})}
+                                />
+                                </div>
+                                <div className= "field">
+                                <label>Strength</label>
+                                <input
+                                    value={this.state.forca}
+                                    onChange={(e)=>this.setState({forca: e.target.value})}
+                                />
+                                </div>
+                                <div className= "field">
+                                <label>Intelligence</label>
+                                <input
+                                    value={this.state.inteligencia}
+                                    onChange={(e)=>this.setState({inteligencia: e.target.value})}
+                                />
+                                </div>
+                            </div>
+                            <div className = "field button">
+                                <button className="ui button" type="submit">Salvar Status</button>
+                            </div>
+                        </form> 
+                    </div>  
+                </div>
             </div>
         )
     }

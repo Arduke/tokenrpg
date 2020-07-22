@@ -75,7 +75,7 @@ class CreateCharPage extends Component {
                             Id: '',
                             DataCreate: "",
                             Level: 0,
-                            Atributos: {dentreza: 0, inteligencia: 0, forca: 0}, 
+                            Atributos: {destreza: 1, inteligencia: 1, forca: 1}, 
                         })} 
                         onClose={()=> this.setVisible(false)} text="Tem certeza que deseja criar este personagem?"/>
             </div>
