@@ -16,7 +16,9 @@ class AtributoPage extends Component {
         else {
             return (
             <div>
-                <StatusList char = {this.props.charSelect.caracter}/>
+                <div>
+                    <StatusList char = {this.props.charSelect}/>
+                </div>
             </div>
             )
         }
@@ -25,8 +27,10 @@ class AtributoPage extends Component {
     render(){
         return (
             <div>
-                <div className="ui container">
-                    {this.charIsSelected()}
+                <div>
+                    <div className="ui container">
+                        {this.charIsSelected()}
+                    </div>
                 </div>
             </div>
         )

@@ -75,6 +75,10 @@ class CreateCharPage extends Component {
                             Id: '',
                             DataCreate: "",
                             Level: 0,
+                            VidaMaxima: 10,
+                            ManaMaxima: 10,
+                            ManaAtual: 10,
+                            VidaAtual: 10,
                             Atributos: {destreza: 1, inteligencia: 1, forca: 1}, 
                         })} 
                         onClose={()=> this.setVisible(false)} text="Tem certeza que deseja criar este personagem?"/>
