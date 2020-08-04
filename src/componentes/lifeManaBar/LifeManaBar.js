@@ -15,33 +15,6 @@ class LifeManaBar extends Component {
         ManaAtual: 0,
     }
 
-    
-
-    componentDidUpdate = () => {
-    }
-
-    componentDidMount = () => {
-    }
-    
-    adicionar = (barra)=>{
-        /*
-        if(barra === 'vida'){
-            if(this.state.PercentVida < 100) {
-            this.setState({PercentVida: VidaAtual/VidaMaxima, VidaAtual: this.state.VidaAtual+(VidaMaxima*0.01)})
-            }
-            
-        } else {
-            if(this.state.PercentMana < 100) {
-                this.setState({PercentMana: this.state.PercentMana+1, ManaAtual: this.state.ManaAtual+(ManaMaxima*0.01)})
-            }
-        }*/
-    }
-
-    diminuir = (barra)=> {
-       this.props.onClickDamage()
-    }
-
-
     render(){
         
         const {ManaMaxima,VidaMaxima,ManaAtual,VidaAtual} = this.props.charSelect;
@@ -54,7 +27,7 @@ class LifeManaBar extends Component {
                         </div>
                         <div className="field">
                             
-                            <button onClick={()=> {this.diminuir("vida")}}className="ui button">Dano</button>
+                            <button onClick={()=> {this.props.onClickDamage()}}className="ui button">Dano</button>
                         </div>
                         <div className="ProgressBar field" >
                             <div style={{backgroundColor:`blue` ,width: `${this.state.PercentMana}%`}} className="Life">{ManaAtual}/{ManaMaxima}</div>

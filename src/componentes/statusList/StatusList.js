@@ -7,9 +7,9 @@ import PopUpPoints from "../../componentes/popUpPoints/PopUpPoints";
 
 class StatusList extends Component {
     state = {
-        destreza: '',
-        forca: '',
-        inteligencia: '',
+        destreza: 0,
+        forca: 0,
+        inteligencia: 0,
         visible: false,
     }
 
@@ -30,8 +30,21 @@ class StatusList extends Component {
 
     onFormSubmit = (event) => {
         event.preventDefault();
-        this.props.UpdateChar({...this.props.char, Atributos: {destreza: this.state.destreza, inteligencia: this.state.inteligencia, forca: this.state.forca}, VidaMaxima: 10+(this.state.forca*10), ManaMaxima: 10+(this.state.inteligencia*10)});
-        this.props.SelectChar({...this.props.char, Atributos: {destreza: this.state.destreza, inteligencia: this.state.inteligencia, forca: this.state.forca}, VidaMaxima: 10+(this.state.forca*10), ManaMaxima: 10+(this.state.inteligencia*10)});
+        const {destreza,forca,inteligencia} = this.state;
+        const {Level} = this.props.char;
+        
+        //não achei solução menos problematica que essa
+        const destrezax = parseInt(destreza, 10)
+        const forcax = parseInt(forca, 10)
+        const inteligenciax = parseInt(inteligencia, 10)
+        
+
+        if((destrezax+forcax+inteligenciax)>(Level*10)){
+            
+        } else {
+            this.props.UpdateChar({...this.props.char, Atributos: {destreza: destreza, inteligencia: inteligencia, forca: forca}, VidaMaxima: 10+(forca*10), ManaMaxima: 10+(inteligencia*10)});
+            this.props.SelectChar({...this.props.char, Atributos: {destreza: destreza, inteligencia: inteligencia, forca: forca}, VidaMaxima: 10+(forca*10), ManaMaxima: 10+(inteligencia*10)});
+        }
     }
 
     render() {
@@ -44,6 +57,22 @@ class StatusList extends Component {
                         </LifeManaBar>
                         </div>
                     </div>  
+                    <div className="levelbar">
+                        <div className="ui Stackable Grid Container">
+                            <div className="itenslavelbar ui labeled input">
+                                <div className="ui label">
+                                    Level: 
+                                </div>
+                                <input readOnly={true} className="ui input" value={this.props.char.Level}></input>
+                            </div>
+                            <div className="itenslavelbar ui labeled input">
+                                <div className="ui label">
+                                    Pontos: 
+                                </div>
+                                <input readOnly={true} className="ui input" value={(this.props.char.Level*10)}></input>
+                            </div>
+                        </div>
+                    </div>    
                     <div className="statusbar"> 
                         <div className="FormStatsPoint">
                             <form onSubmit={this.onFormSubmit} className="ui form">

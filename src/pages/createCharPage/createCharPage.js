@@ -74,7 +74,7 @@ class CreateCharPage extends Component {
                             Historia: this.state.Historia,
                             Id: '',
                             DataCreate: "",
-                            Level: 0,
+                            Level: 1,
                             VidaMaxima: 10,
                             ManaMaxima: 10,
                             ManaAtual: 10,
