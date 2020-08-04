@@ -19,7 +19,7 @@ class ListCaracters extends Component {
             const chars = this.props.redux.charList.map((caracter) =>{
                 return (
                     <div className="Cards-Book" key = {caracter.Nome}>
-                        <div onClick={()=>this.props.SelectChar({caracter})}className="ui card">
+                        <div onClick={()=>this.props.SelectChar(caracter)}className="ui card">
                             <div className="content">
                                 <div className="header">{caracter.Nome}</div>
                                     <div className="meta">

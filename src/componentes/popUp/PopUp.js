@@ -8,7 +8,7 @@ class PopUp extends Component{
         return ( 
         <div className="popUp">
             <div className="cartao ui card">
-                <div className="ui content ">
+                <div className="ui content">
                     <div className="ui description"> 
                         {this.props.text}
                     </div>
